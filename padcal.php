@@ -101,7 +101,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
 
     <br>主动技能倍率:
     <input type="text" id="skill" name="skill"  value="<?=isset($_POST['skill'])?$_POST['skill']:1;?>" size="5" maxlength="5" />
- <select name="skill" id="skilloption" onchange="skillselect()">
+ <select id="skilloption" onchange="skillselect()">
 <?php
    $skillmtp=array(1,1.2,1.3,1.5,2,2.5,3);
    foreach ($skillmtp as $skillvalue){
