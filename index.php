@@ -115,11 +115,24 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
  </select> 
 
     <br>觉醒横排加强数:
- <select name="jxnum" >  
+ <select name="jxrownum" >  
 <?php
     for ($i=0;$i<=18;$i++){
-	if (isset($_POST['jxnum']) && $_POST['jxnum'] == $i) {
-	echo "<option value=\"".$_POST['jxnum']."\" selected>".$_POST['jxnum']."</option>\n";	
+	if (isset($_POST['jxrownum']) && $_POST['jxrownum'] == $i) {
+	echo "<option value=\"".$_POST['jxrownum']."\" selected>".$_POST['jxrownum']."</option>\n";	
+	}
+	else
+	echo "   <option value=\"$i\">$i</option>\n";
+    }
+?>
+ </select>
+
+    <br>觉醒加珠数(点灯时有效):
+ <select name="jxplusnum" >  
+<?php
+    for ($i=0;$i<=18;$i++){
+	if (isset($_POST['jxplusnum']) && $_POST['jxplusnum'] == $i) {
+	echo "<option value=\"".$_POST['jxplusnum']."\" selected>".$_POST['jxplusnum']."</option>\n";	
 	}
 	else
 	echo "   <option value=\"$i\">$i</option>\n";
@@ -221,8 +234,12 @@ if (isset($_POST['skill'])) {
 	$skill=$_POST['skill'];
 }
 
-if (isset($_POST['jxnum'])) {
-	$jxnum=$_POST['jxnum'];
+if (isset($_POST['jxrownum'])) {
+	$jxrownum=$_POST['jxrownum'];
+}
+
+if (isset($_POST['jxplusnum'])) {
+	$jxplusnum=$_POST['jxplusnum'];
 }
 
 if (isset($_POST['combo'])) {
@@ -269,7 +286,8 @@ echo "<div id=\"result\"><p style=\"display:none;\">";
 echo "以下结果来自www.padcal.com<br>";
 echo "队长倍率 = $leader1 × $leader2 <br>";
 echo "主动技能倍率 = $skill <br>";
-echo "觉醒横排加强数 = $jxnum <br>";
+echo "觉醒横排加强数 = $jxrownum <br>";
+echo "觉醒加珠数 = $jxplusnum <br>";
 //echo "连击数combo = $combo <br>";
 echo "攻击力 = $atk <br>";
 if ($anti == 2){
@@ -283,6 +301,13 @@ for ($i=2;$i<=5;$i++) {
 	echo " + ".$orb[$i];
 }
 echo "，横排数为${linenum}<br>";
+
+if ($light == 0){
+	$plusnum=0;
+}
+else {
+	$plusnum=$jxplusnum;
+}
 
 for ($i=1;$i<=5;$i++) {
 	if ($orb[$i] < 6 ){
@@ -301,10 +326,10 @@ for ($i=1;$i<=5;$i++) {
 		$mtp[$i]=0;
 	}
 	else 
-	$mtp[$i]=(1+0.25*($orb[$i]-3))*(1+0.1*$jxnum*$hpnum[$i])*(1+0.06*$orb[$i]*$light)*$skill*$leader*(1+0.25*($combo-1));
+	$mtp[$i]=(1+0.25*($orb[$i]-3))*(1+0.1*$jxrownum*$hpnum[$i])*(1+0.06*$orb[$i]*$light)*(1+0.04*$plusnum)*$skill*$leader*(1+0.25*($combo-1));
 }
 $totalmtp=array_sum($mtp)*$anti;
-$fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxnum)*$skill*$leader*$anti;
+$fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.04*$plusnum)*$skill*$leader*$anti;
 $damage=$atk*$totalmtp;
 $fulldamage=$atk*$fullmtp;
 switch ($light)
@@ -347,7 +372,8 @@ echo "<p>上<br>次<br>计<br>算<br>结<br>果</p></td><td bgcolor=\"#FFFFCC\" 
 echo "<p class=\"small\">";
 echo "队长倍率 = ".$_SESSION['leader1']." × ".$_SESSION['leader2']."，";
 echo "主动技能倍率 = ".$_SESSION['skill']." <br>";
-echo "觉醒横排加强数 = ".$_SESSION['jxnum'];
+echo "觉醒横排加强数 = ".$_SESSION['jxrownum']."，";
+echo "觉醒加珠数 = ".$_SESSION['jxplusnum'];
 if ($_SESSION['anti'] == 2){
 echo "，属性相克<br>";
 }
@@ -390,7 +416,8 @@ echo "<p>上<br>上<br>次<br>计<br>算<br>结<br>果</p></td><td bgcolor=\"#CC
 echo "<p class=\"small\">";
 echo "队长倍率 = ".$_SESSION['leader21']." × ".$_SESSION['leader22']."，";
 echo "主动技能倍率 = ".$_SESSION['skill2']." <br>";
-echo "觉醒横排加强数 = ".$_SESSION['jxnum2'];
+echo "觉醒横排加强数 = ".$_SESSION['jxrownum2']."，";
+echo "觉醒加珠数 = ".$_SESSION['jxplusnum2'];
 if ($_SESSION['anti2'] == 2){
 echo "，属性相克<br>";
 }
@@ -429,7 +456,8 @@ $_SESSION['atk2']=$_SESSION['atk'];
 $_SESSION['leader21']=$_SESSION['leader1'];
 $_SESSION['leader22']=$_SESSION['leader2'];
 $_SESSION['skill2']=$_SESSION['skill'];
-$_SESSION['jxnum2']=$_SESSION['jxnum'];
+$_SESSION['jxrownum2']=$_SESSION['jxrownum'];
+$_SESSION['jxplusnum2']=$_SESSION['jxplusnum'];
 $_SESSION['totalmtp2']=$_SESSION['totalmtp'];
 $_SESSION['damage2']=$_SESSION['damage'];
 $_SESSION['fullmtp2']=$_SESSION['fullmtp'];
@@ -449,7 +477,8 @@ $_SESSION['atk']=$atk;
 $_SESSION['leader1']=$leader1;
 $_SESSION['leader2']=$leader2;
 $_SESSION['skill']=$skill;
-$_SESSION['jxnum']=$jxnum;
+$_SESSION['jxrownum']=$jxrownum;
+$_SESSION['jxplusnum']=$jxplusnum;
 $_SESSION['totalmtp']=$totalmtp;
 $_SESSION['damage']=$damage;
 $_SESSION['fullmtp']=$fullmtp;
