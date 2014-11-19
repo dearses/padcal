@@ -103,7 +103,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     <input type="text" id="skill" name="skill"  value="<?=isset($_POST['skill'])?$_POST['skill']:1;?>" size="5" maxlength="5" />
  <select id="skilloption" onchange="skillselect()">
 <?php
-   $skillmtp=array(1,1.2,1.3,1.5,2,2.5,3);
+   $skillmtp=array(1,1.15,1.2,1.3,1.5,2,2.5,3);
    foreach ($skillmtp as $skillvalue){
         if (isset($_POST['skill']) && $_POST['skill'] == $skillvalue) {
         echo "<option value=\"".$_POST['skill']."\" selected>".$_POST['skill']."</option>\n";
