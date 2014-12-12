@@ -452,25 +452,82 @@ echo "</p></td></tr></table>";
 }
 
 //记录上上次结果
-$_SESSION['atk2']=$_SESSION['atk'];
-$_SESSION['leader21']=$_SESSION['leader1'];
-$_SESSION['leader22']=$_SESSION['leader2'];
-$_SESSION['skill2']=$_SESSION['skill'];
-$_SESSION['jxrownum2']=$_SESSION['jxrownum'];
-$_SESSION['jxplusnum2']=$_SESSION['jxplusnum'];
-$_SESSION['totalmtp2']=$_SESSION['totalmtp'];
-$_SESSION['damage2']=$_SESSION['damage'];
-$_SESSION['fullmtp2']=$_SESSION['fullmtp'];
-$_SESSION['fulldamage2']=$_SESSION['fulldamage'];
-$_SESSION['orb21']=$_SESSION['orb1'];
-$_SESSION['orb22']=$_SESSION['orb2'];
-$_SESSION['orb23']=$_SESSION['orb3'];
-$_SESSION['orb24']=$_SESSION['orb4'];
-$_SESSION['orb25']=$_SESSION['orb5'];
-$_SESSION['linenum2']=$_SESSION['linenum'];
-$_SESSION['checklight2']=$_SESSION['checklight'];
-$_SESSION['combo2']=$_SESSION['combo'];
-$_SESSION['anti2']=$_SESSION['anti'];
+if (isset($_SESSION['atk'])) {
+	$_SESSION['atk2']=$_SESSION['atk'];
+}
+
+if (isset($_SESSION['leader1'])) {
+	$_SESSION['leader21']=$_SESSION['leader1'];
+}
+
+if (isset($_SESSION['leader2'])) {
+	$_SESSION['leader22']=$_SESSION['leader2'];
+}
+
+if (isset($_SESSION['skill'])) {
+	$_SESSION['skill2']=$_SESSION['skill'];
+}
+
+if (isset($_SESSION['jxrownum'])) {
+	$_SESSION['jxrownum2']=$_SESSION['jxrownum'];
+}
+
+if (isset($_SESSION['jxplusnum'])) {
+	$_SESSION['jxplusnum2']=$_SESSION['jxplusnum'];
+}
+
+if (isset($_SESSION['totalmtp'])) {
+	$_SESSION['totalmtp2']=$_SESSION['totalmtp'];
+}
+
+if (isset($_SESSION['damage'])) {
+	$_SESSION['damage2']=$_SESSION['damage'];
+}
+
+if (isset($_SESSION['fullmtp'])) {
+	$_SESSION['fullmtp2']=$_SESSION['fullmtp'];
+}
+
+if (isset($_SESSION['fulldamage'])) {
+	$_SESSION['fulldamage2']=$_SESSION['fulldamage'];
+}
+
+if (isset($_SESSION['orb1'])) {
+	$_SESSION['orb21']=$_SESSION['orb1'];
+}
+
+if (isset($_SESSION['orb2'])) {
+	$_SESSION['orb22']=$_SESSION['orb2'];
+}
+
+if (isset($_SESSION['orb3'])) {
+	$_SESSION['orb23']=$_SESSION['orb3'];
+}
+
+if (isset($_SESSION['orb4'])) {
+	$_SESSION['orb24']=$_SESSION['orb4'];
+}
+
+if (isset($_SESSION['orb5'])) {
+	$_SESSION['orb25']=$_SESSION['orb5'];
+}
+
+if (isset($_SESSION['linenum'])) {
+	$_SESSION['linenum2']=$_SESSION['linenum'];
+}
+
+if (isset($_SESSION['checklight'])) {
+	$_SESSION['checklight2']=$_SESSION['checklight'];
+}
+
+if (isset($_SESSION['combo'])) {
+	$_SESSION['combo2']=$_SESSION['combo'];
+}
+
+if (isset($_SESSION['anti'])) {
+	$_SESSION['anti2']=$_SESSION['anti'];
+}
+
 
 //记录上次结果
 $_SESSION['atk']=$atk;
