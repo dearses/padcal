@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="7.4.1";
-$apkfile="pad741.apk";
+$apkver="7.5.0";
+$apkfile="pad750.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -326,10 +326,10 @@ for ($i=1;$i<=5;$i++) {
 		$mtp[$i]=0;
 	}
 	else 
-	$mtp[$i]=(1+0.25*($orb[$i]-3))*(1+0.1*$jxrownum*$hpnum[$i])*(1+0.06*$orb[$i]*$light)*(1+0.04*$plusnum)*$skill*$leader*(1+0.25*($combo-1));
+	$mtp[$i]=(1+0.25*($orb[$i]-3))*(1+0.1*$jxrownum*$hpnum[$i])*(1+0.06*$orb[$i]*$light)*(1+0.05*$plusnum)*$skill*$leader*(1+0.25*($combo-1));
 }
 $totalmtp=array_sum($mtp)*$anti;
-$fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.04*$plusnum)*$skill*$leader*$anti;
+$fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.05*$plusnum)*$skill*$leader*$anti;
 $damage=$atk*$totalmtp;
 $fulldamage=$atk*$fullmtp;
 switch ($light)
