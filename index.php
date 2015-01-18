@@ -309,16 +309,17 @@ else {
 	$plusnum=$jxplusnum;
 }
 
+// 20150118:修正横排伤害计算方式，横排觉醒作用于所有珠子
 for ($i=1;$i<=5;$i++) {
-	if ($orb[$i] < 6 ){
-		$hpnum[$i]=0;
-	}
-	elseif ($orb[$i] > 25 ){
-		$hpnum[$i]=1;
-	}
-	else {
+//	if ($orb[$i] < 6 ){
+//		$hpnum[$i]=0;
+//	}
+//	elseif ($orb[$i] > 25 ){
+//		$hpnum[$i]=1;
+//	}
+//	else {
 		$hpnum[$i]=$linenum;
-	}
+//	}
 }
 
 for ($i=1;$i<=5;$i++) {
