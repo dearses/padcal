@@ -199,12 +199,12 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
  </select> 
 
     <br>属性相克:
-    <input type="checkbox" id="anti" name="anti" value="2"/ <?php if (isset($_POST['anti']) && $_POST['anti']=='2') echo 'checked'; ?>>
+    <input type="checkbox" id="anti" name="anti" value="2"/ <?php if (isset($_POST['anti']) && $_POST['anti']=='2') echo 'checked'; ?> />
     <span>　</span>点灯:
-    <input type="checkbox" id="light" name="light" value="1"/ <?php if (isset($_POST['light']) && $_POST['light']=='1') echo 'checked'; ?>>
+    <input type="checkbox" id="light" name="light" value="1"/ <?php if (isset($_POST['light']) && $_POST['light']=='1') echo 'checked'; ?> />
     <span>　</span>
     <input type="submit" name="submit" value="计算" />
-    <input type="button" id="reset" value="重置"/>
+    <input type="button" id="reset" value="重置" />
 
     <br>
 <table cellspacing=1 cellpadding=1 width=100% height=200 border=0  bgcolor="000000">
@@ -266,11 +266,11 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     }
 ?>
   </tr>
-</form>
+
 
 <?php
 
-//定义提交的各种参数//
+//定义提交的各种参数
 if (isset($_POST['leader1'])) {
 	$leader1=$_POST['leader1'];
 }
@@ -339,7 +339,7 @@ if (isset($_POST['leader1'])) {
 $leader=$leader1*$leader2;
 
 
-//计算伤害过程//
+//计算伤害过程
 
 if ($light == 0){
 	$plusnum=0;
@@ -348,20 +348,10 @@ else {
 	$plusnum=$jxplusnum;
 }
 
-// 20150118:修正横排伤害计算方式，横排觉醒作用于所有珠子
 for ($i=1;$i<=5;$i++) {
-//	if ($orb[$i] < 6 ){
-//		$hpnum[$i]=0;
-//	}
-//	elseif ($orb[$i] > 25 ){
-//		$hpnum[$i]=1;
-//	}
-//	else {
-		$hpnum[$i]=$linenum;
-//	}
+	$hpnum[$i]=$linenum;
 }
 
-//$u=array("0",$u1,$u2,$u3,$u4,$u5,$u6);
 
 for ($n=1;$n<=6;$n++) {
   for ($i=1;$i<=5;$i++) {
@@ -386,7 +376,7 @@ $fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.05*$plusnum)*$skill*$leader*
 $totalatk=array_sum($monsteratk);
 $fulldamage=round($totalatk*$fullmtp);
 
-//补充计算结果到表格下端//
+//补充计算结果到表格下端
 echo  "<tr align=\"center\">";
 echo  "<td bgcolor=\"FFFFFF\">伤害值</td>";
     for ($i=1;$i<=6;$i++){
@@ -400,23 +390,21 @@ echo  "<tr align=\"center\">";
 echo  "<td bgcolor=\"FFFFFF\">总伤害值</td>";
 echo  "<td bgcolor=\"FFFFFF\" colspan=\"6\"><b>".(isset($totaldamage)?$totaldamage:0)."</b></td>";
 echo  "</tr>";
-echo  "</table>";
+}
 ?>
 
-
+</table>
     <br><a href="http://www.padcal.com/rowenhanced.jpg" target="_blank">横排强化排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/twopronged.jpg" target="_blank">二体攻击排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/heroicgod.jpg" target="_blank">英雄神排珠图</a>  <span>　</span> 
     <br><a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> <a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
-  </table>
   </p>
-  </form>
+</form>
   </td></tr></table>
- </div>
-
 
 <?php
 //显示第一次计算结果//
+if (isset($_POST['leader1'])) {
 echo "<div align=\"center\">";
 echo "<table border=\"0\" cellpadding=\"10\" cellspacing=\"1\" bgcolor=\"black\" ><tr><td bgcolor=\"#F0F8FF\">";
 echo "<p>本<br>次<br>计<br>算<br>结<br>果</p></td><td bgcolor=\"#F0F8FF\" >";
