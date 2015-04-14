@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="7.7.3";
-$apkfile="pad773.apk";
+$apkver="7.7.4";
+$apkfile="pad774.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -397,7 +397,8 @@ echo  "</tr>";
     <br><a href="http://www.padcal.com/rowenhanced.jpg" target="_blank">横排强化排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/twopronged.jpg" target="_blank">二体攻击排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/heroicgod.jpg" target="_blank">英雄神排珠图</a>  <span>　</span> 
-    <br><a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> <a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
+    <br><a href="http://www.padcal.com/highcombo.jpg" target="_blank">高combo排珠图</a>  <span>　</span> 
+    <a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> <a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
   </p>
 </form>
   </td></tr></table>
