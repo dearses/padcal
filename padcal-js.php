@@ -83,7 +83,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     队长倍率:
  <select name="leader1" >
 <?php
-   $leadermtp=array(1,1.35,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,7,8,9,10,11,12,13,14,15);
+   $leadermtp=array(1,1.35,1.5,2,2.5,3,3.15,3.3,3.5,4,4.25,4.5,5,5.5,6,6.75,7,8,9,10,11,12,13,14,15);
    foreach ($leadermtp as $leadervalue){
         if (isset($_POST['leader1']) && $_POST['leader1'] == $leadervalue) {
         echo "<option value=\"".$_POST['leader1']."\" selected>".$_POST['leader1']."</option>\n";
