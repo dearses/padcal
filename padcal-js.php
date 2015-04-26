@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="7.7.4";
-$apkfile="pad774.apk";
+$apkver="7.8.1";
+$apkfile="pad781.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
