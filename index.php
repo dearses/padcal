@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="7.9.2";
-$apkfile="pad792.apk";
+$apkver="8.0.0";
+$apkfile="pad800.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -150,7 +150,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     <br>连击数combo:
  <select name="combo" >  
 <?php
-    for ($i=1;$i<=10;$i++){
+    for ($i=1;$i<=20;$i++){
 	if (isset($_POST['combo']) && $_POST['combo'] == $i) {
 	echo "<option value=\"".$_POST['combo']."\" selected>".$_POST['combo']."</option>\n";	
 	}
@@ -163,7 +163,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     <br>珠子排列方式：<br>
 
 <?php
- for ($j=1;$j<=5;$j++) {
+ for ($j=1;$j<=6;$j++) {
    if ($j > 1) {
    echo "<span> + </span>";
    }
@@ -295,7 +295,7 @@ if (isset($_POST['combo'])) {
 	$combo=$_POST['combo'];
 }
 
-for ($i=1;$i<=5;$i++) {
+for ($i=1;$i<=6;$i++) {
  if (isset($_POST['orb'.$i])) {
 	$orb[$i]=intval($_POST['orb'.$i])>0?intval($_POST['orb'.$i]):0;
  }
@@ -348,13 +348,13 @@ else {
 	$plusnum=$jxplusnum;
 }
 
-for ($i=1;$i<=5;$i++) {
+for ($i=1;$i<=6;$i++) {
 	$hpnum[$i]=$linenum;
 }
 
 
 for ($n=1;$n<=6;$n++) {
-  for ($i=1;$i<=5;$i++) {
+  for ($i=1;$i<=6;$i++) {
 	if ($orb[$i] < 3 ){
 		$mtp[$i]=0;
 	}
@@ -421,7 +421,7 @@ if ($anti == 2){
 echo "属性相克<br>";
 }
 echo "珠子排列方式为 ".$orb[1];
-for ($i=2;$i<=5;$i++) {
+for ($i=2;$i<=6;$i++) {
     if ($orb[$i] > 0) 	
 	echo " + ".$orb[$i];
 }
