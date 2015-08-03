@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="8.0.0";
-$apkfile="pad800.apk";
+$apkver="8.1.0";
+$apkfile="pad810.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -56,8 +56,8 @@ var _hmt = _hmt || [];
 function orbcheck()
 {
   var orbsum=Number(document.cal.orb1.value)+Number(document.cal.orb2.value)+Number(document.cal.orb3.value)+Number(document.cal.orb4.value)+Number(document.cal.orb5.value);
-  if (orbsum > 30)
-    {alert("珠子总数不能超过30颗!");
+  if (orbsum > 42)
+    {alert("珠子总数不能超过42颗!");
      return false;
     }
 }
@@ -124,7 +124,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     <br>觉醒横排加强数:
  <select name="jxrownum" >  
 <?php
-    for ($i=0;$i<=18;$i++){
+    for ($i=0;$i<=24;$i++){
 	if (isset($_POST['jxrownum']) && $_POST['jxrownum'] == $i) {
 	echo "<option value=\"".$_POST['jxrownum']."\" selected>".$_POST['jxrownum']."</option>\n";	
 	}
@@ -160,15 +160,20 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
 ?>
  </select>
 
+    <br>珠子排列版面：
+     <input id="formtype" type="radio" name="formtype" value="20" <?php if (isset($_POST['formtype']) && $_POST['formtype']=='20') echo 'checked'; ?> />5×4　
+     <input id="formtype" type="radio" name="formtype" value="30" <?php if (!isset($_POST['formtype']) || $_POST['formtype']=='30') echo 'checked'; ?>/>6×5　
+     <input id="formtype" type="radio" name="formtype" value="42" <?php if (isset($_POST['formtype']) && $_POST['formtype']=='42') echo 'checked'; ?>/>7×6　
+     
     <br>珠子排列方式：<br>
 
 <?php
- for ($j=1;$j<=6;$j++) {
+ for ($j=1;$j<=7;$j++) {
    if ($j > 1) {
    echo "<span> + </span>";
    }
    echo "<select name=\"orb$j\" >";
-    for ($i=0;$i<=30;$i++){
+    for ($i=0;$i<=42;$i++){
 	if ($i == 1 || $i == 2) {
 	}
 	else {
@@ -295,7 +300,11 @@ if (isset($_POST['combo'])) {
 	$combo=$_POST['combo'];
 }
 
-for ($i=1;$i<=6;$i++) {
+if (isset($_POST['formtype'])) {
+	$formtype=$_POST['formtype'];
+}
+
+for ($i=1;$i<=7;$i++) {
  if (isset($_POST['orb'.$i])) {
 	$orb[$i]=intval($_POST['orb'.$i])>0?intval($_POST['orb'.$i]):0;
  }
@@ -341,6 +350,8 @@ $leader=$leader1*$leader2;
 
 //计算伤害过程
 
+$fullorbnum = $formtype;
+
 if ($light == 0){
 	$plusnum=0;
 }
@@ -354,7 +365,7 @@ for ($i=1;$i<=6;$i++) {
 
 
 for ($n=1;$n<=6;$n++) {
-  for ($i=1;$i<=6;$i++) {
+  for ($i=1;$i<=7;$i++) {
 	if ($orb[$i] < 3 ){
 		$mtp[$i]=0;
 	}
@@ -372,7 +383,7 @@ for ($n=1;$n<=6;$n++) {
 }
 
 $totaldamage=array_sum($monsterdamage);
-$fullmtp=7.75*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.05*$plusnum)*$skill*$leader*$anti;
+$fullmtp=(1+0.25*($fullorbnum-3))*(1+$light*1.8)*(1+0.1*$jxrownum)*(1+0.05*$plusnum)*$skill*$leader*$anti;
 $totalatk=array_sum($monsteratk);
 $fulldamage=round($totalatk*$fullmtp);
 
@@ -398,7 +409,9 @@ echo  "</tr>";
     <a href="http://www.padcal.com/twopronged.jpg" target="_blank">二体攻击排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/heroicgod.jpg" target="_blank">英雄神排珠图</a>  <span>　</span> 
     <br><a href="http://www.padcal.com/highcombo.jpg" target="_blank">高combo排珠图</a>  <span>　</span> 
-    <a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> <a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
+    <a href="http://www.padcal.com/highcombo7x6.jpg" target="_blank">7×6高combo排珠图</a>  <span>　</span> 
+    <a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> 
+    <br><a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
   </p>
 </form>
   </td></tr></table>
@@ -421,7 +434,7 @@ if ($anti == 2){
 echo "属性相克<br>";
 }
 echo "珠子排列方式为 ".$orb[1];
-for ($i=2;$i<=6;$i++) {
+for ($i=2;$i<=7;$i++) {
     if ($orb[$i] > 0) 	
 	echo " + ".$orb[$i];
 }
@@ -479,7 +492,7 @@ else
 echo "<br>";
 }
 echo "珠子排列方式为 ".$_SESSION['orb1'];
-for ($i=2;$i<=5;$i++) {
+for ($i=2;$i<=7;$i++) {
     if ($_SESSION["orb$i"] > 0)
         echo " + ".$_SESSION["orb$i"];
 }
@@ -523,7 +536,7 @@ else
 echo "<br>";
 }
 echo "珠子排列方式为 ".$_SESSION['orb21'];
-for ($i=2;$i<=5;$i++) {
+for ($i=2;$i<=7;$i++) {
     if ($_SESSION["orb2$i"] > 0)
         echo " + ".$_SESSION["orb2$i"];
 }
@@ -573,6 +586,10 @@ if (isset($_SESSION['jxplusnum'])) {
 	$_SESSION['jxplusnum2']=$_SESSION['jxplusnum'];
 }
 
+if (isset($_SESSION['formtype'])) {
+	$_SESSION['formtype2']=$_SESSION['formtype'];
+}
+
 if (isset($_SESSION['totaldamage'])) {
 	$_SESSION['totaldamage2']=$_SESSION['totaldamage'];
 }
@@ -605,6 +622,14 @@ if (isset($_SESSION['orb5'])) {
 	$_SESSION['orb25']=$_SESSION['orb5'];
 }
 
+if (isset($_SESSION['orb6'])) {
+	$_SESSION['orb26']=$_SESSION['orb6'];
+}
+
+if (isset($_SESSION['orb7'])) {
+	$_SESSION['orb27']=$_SESSION['orb7'];
+}
+
 if (isset($_SESSION['linenum'])) {
 	$_SESSION['linenum2']=$_SESSION['linenum'];
 }
@@ -629,6 +654,7 @@ $_SESSION['leader2']=$leader2;
 $_SESSION['skill']=$skill;
 $_SESSION['jxrownum']=$jxrownum;
 $_SESSION['jxplusnum']=$jxplusnum;
+$_SESSION['formtype']=$formtype;
 $_SESSION['totaldamage']=$totaldamage;
 $_SESSION['fullmtp']=$fullmtp;
 $_SESSION['fulldamage']=$fulldamage;
@@ -637,6 +663,8 @@ $_SESSION['orb2']=$orb[2];
 $_SESSION['orb3']=$orb[3];
 $_SESSION['orb4']=$orb[4];
 $_SESSION['orb5']=$orb[5];
+$_SESSION['orb6']=$orb[6];
+$_SESSION['orb7']=$orb[7];
 $_SESSION['linenum']=$linenum;
 $_SESSION['checklight']=$checklight;
 $_SESSION['combo']=$combo;
