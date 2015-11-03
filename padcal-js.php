@@ -1,7 +1,7 @@
 <?php
 session_start();
-$apkver="8.1.0";
-$apkfile="pad810.apk";
+$apkver="8.4.1";
+$apkfile="pad841.apk";
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -83,7 +83,7 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
     队长倍率:
  <select name="leader1" >
 <?php
-   $leadermtp=array(1,1.35,1.5,2,2.5,3,3.15,3.3,3.5,4,4.25,4.5,5,5.5,6,6.75,7,8,9,10,11,12,13,14,15);
+   $leadermtp=array(1,1.35,1.5,2,2.5,3,3.15,3.3,3.5,4,4.25,4.5,5,5.5,6,6.5,6.75,7,7.5,8,9,10,11,12,13,14,15);
    foreach ($leadermtp as $leadervalue){
         if (isset($_POST['leader1']) && $_POST['leader1'] == $leadervalue) {
         echo "<option value=\"".$_POST['leader1']."\" selected>".$_POST['leader1']."</option>\n";
@@ -410,8 +410,9 @@ echo  "</tr>";
     <a href="http://www.padcal.com/heroicgod.jpg" target="_blank">英雄神排珠图</a>  <span>　</span> 
     <br><a href="http://www.padcal.com/highcombo.jpg" target="_blank">高combo排珠图</a>  <span>　</span> 
     <a href="http://www.padcal.com/highcombo7x6.jpg" target="_blank">7×6高combo排珠图</a>  <span>　</span> 
-    <a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> 
-    <br><a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
+    <a href="http://www.padcal.com/highcombo5.jpg" target="_blank">5加珠二体排珠图</a>  <span>　</span> 
+    <br><a href="http://www.padcal.com/<?=$apkfile;?>" target="_blank">安卓<?=$apkver;?>版安装包</a>  <span>　</span> 
+    <a href="http://tieba.baidu.com/p/3031717987" target="_blank">给我留言</a>
   </p>
 </form>
   </td></tr></table>
