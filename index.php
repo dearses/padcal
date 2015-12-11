@@ -243,9 +243,13 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           break;
           case 1; 
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           break;
@@ -253,8 +257,26 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           break;
           case 3; 
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          break;
+          case 4; 
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          break;
+          case 5; 
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ucolor.png\"></img><br>\n";
@@ -264,6 +286,8 @@ document.getElementById("skill").value=myskill.options[myskill.selectedIndex].te
         else {
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";       
+          echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";       
           echo "<img src=\"awokenskill-2ugrey.png\"></img><br>\n";       
         }
         echo "<input type=\"hidden\" id=\"u".$i."\" name=\"u".$i."\"  value=\"".(isset($_POST['u'.$i])?$_POST['u'.$i]:0)."\" size=\"5\" maxlength=\"5\"/>\n";
